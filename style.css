@@ -1,0 +1,29 @@
+/* FMUCORE — small custom touches on top of Tailwind utility classes */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Slightly nicer focus ring on buttons/links for keyboard users */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+/* Custom thin scrollbar (admin table, etc.) */
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #c7d2fe;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a5b4fc;
+}

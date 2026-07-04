@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Participant Details — FMUCORE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'sans-serif'] },
+        colors: {
+          brand: {
+            50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc',
+            400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca',
+            800: '#3730a3', 900: '#312e81'
+          }
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="min-h-screen bg-slate-50 font-sans text-slate-800 antialiased">
+
+  <div id="topbar"></div>
+
+  <div id="loadingState" class="max-w-3xl mx-auto px-4 sm:px-6 py-10 animate-pulse">
+    <div class="h-8 w-64 bg-slate-200 rounded mb-8"></div>
+    <div class="h-80 bg-slate-200 rounded-2xl"></div>
+  </div>
+
+  <div id="notFoundState" class="hidden max-w-3xl mx-auto px-4 sm:px-6 py-16 text-center">
+    <h1 class="text-xl font-bold text-slate-900 mb-2">Participant not found</h1>
+    <p class="text-slate-500 text-sm mb-6">This account may have been removed.</p>
+    <a href="admin.html" class="text-brand-600 font-semibold text-sm hover:text-brand-700">&larr; Back to admin panel</a>
+  </div>
+
+  <main id="content" class="hidden max-w-3xl mx-auto px-4 sm:px-6 py-8">
+
+    <a href="admin.html" class="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-brand-700 transition mb-5">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to admin panel
+    </a>
+
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
+
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-100">
+        <div>
+          <h1 id="detailName" class="text-xl font-extrabold text-slate-900">—</h1>
+          <p id="detailEmail" class="text-sm text-slate-500 mt-0.5">—</p>
+        </div>
+        <span id="detailStatusBadge" class="self-start sm:self-auto px-3 py-1 rounded-full text-xs font-bold">—</span>
+      </div>
+
+      <!-- Prominent Cpack banner -->
+      <div id="cpackBanner" class="hidden mb-6 rounded-xl px-4 py-3 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+          <span id="cpackBannerText" class="font-extrabold text-sm">—</span>
+        </div>
+        <span id="cpackBannerMeta" class="text-xs opacity-80">—</span>
+      </div>
+
+      <dl class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5 text-sm">
+        <div>
+          <dt class="text-slate-400 font-semibold text-xs uppercase tracking-wider mb-1">Phone</dt>
+          <dd id="detailPhone" class="text-slate-800">—</dd>
+        </div>
+        <div>
+          <dt class="text-slate-400 font-semibold text-xs uppercase tracking-wider mb-1">Organization</dt>
+          <dd id="detailOrg" class="text-slate-800">—</dd>
+        </div>
+        <div>
+          <dt class="text-slate-400 font-semibold text-xs uppercase tracking-wider mb-1">Role</dt>
+          <dd id="detailRole" class="text-slate-800">—</dd>
+        </div>
+        <div>
+          <dt class="text-slate-400 font-semibold text-xs uppercase tracking-wider mb-1">Serial Number</dt>
+          <dd id="detailSerial" class="text-slate-800 font-mono">—</dd>
+        </div>
+        <div>
+          <dt class="text-slate-400 font-semibold text-xs uppercase tracking-wider mb-1">Registered On</dt>
+          <dd id="detailCreatedAt" class="text-slate-800">—</dd>
+        </div>
+        <div>
+          <dt class="text-slate-400 font-semibold text-xs uppercase tracking-wider mb-1">Blocked</dt>
+          <dd id="detailBlocked" class="text-slate-800">—</dd>
+        </div>
+        <div>
+          <dt class="text-slate-400 font-semibold text-xs uppercase tracking-wider mb-1">Approved By</dt>
+          <dd id="detailApprovedBy" class="text-slate-800">—</dd>
+        </div>
+        <div>
+          <dt class="text-slate-400 font-semibold text-xs uppercase tracking-wider mb-1">Cpack Issued By</dt>
+          <dd id="detailCpackBy" class="text-slate-800">—</dd>
+        </div>
+      </dl>
+
+      <div class="flex flex-wrap gap-2.5 mt-8 pt-6 border-t border-slate-100">
+        <button id="toggleApproveBtn" class="px-4 py-2 rounded-lg text-sm font-semibold transition"></button>
+        <button id="toggleBlockBtn" class="px-4 py-2 rounded-lg text-sm font-semibold transition"></button>
+        <button id="issueCpackBtn" class="px-4 py-2 rounded-lg text-sm font-semibold transition"></button>
+        <!-- Revoke Cpack button disabled by request; uncomment to re-enable
+        <button id="revokeCpackBtn" class="px-4 py-2 rounded-lg text-sm font-semibold transition"></button>
+        -->
+      </div>
+
+    </div>
+  </main>
+
+  <div id="toast" class="hidden fixed bottom-5 right-5 z-50 max-w-xs px-4 py-3 rounded-lg shadow-lg text-sm font-medium"></div>
+
+  <script type="module" src="js/user-details.js"></script>
+</body>
+</html>
