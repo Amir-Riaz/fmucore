@@ -42,12 +42,16 @@ export function renderTopbar(activePage, { isAdmin = false } = {}) {
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="h-16 flex items-center justify-between">
 
-          <a href="dashboard.html" class="flex items-center gap-2.5 shrink-0">
-            <div class="w-9 h-9 rounded-xl bg-brand-600 flex items-center justify-center text-white font-extrabold text-sm shadow-lg shadow-brand-600/30">
-              FC
-            </div>
-            <span class="text-lg font-extrabold tracking-tight text-slate-900">FMUCORE</span>
-          </a>
+         <a href="dashboard.html" class="flex items-center gap-2.5 shrink-0">
+  <img
+    src="cor1.png"
+    alt="FMUCORE Logo"
+    class="w-9 h-9 object-contain"
+  />
+  <span class="text-lg font-extrabold tracking-tight text-slate-900">
+    FMUCORE
+  </span>
+</a>
 
           <!-- Desktop nav -->
           <nav class="hidden md:flex items-center gap-1">

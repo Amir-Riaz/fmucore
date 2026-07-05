@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Submit Your Abstract — FMUCORE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'sans-serif'] },
+        colors: {
+          brand: {
+            50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc',
+            400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca',
+            800: '#3730a3', 900: '#312e81'
+          }
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="css/style.css" />
+<style>
+  /* Step tile fill animation for the progress grid */
+  .step-tile { position: relative; overflow: hidden; }
+  .step-tile[data-state="complete"] .step-tile-check { transform: scale(1); opacity: 1; }
+  .step-tile-check { transform: scale(0.4); opacity: 0; transition: transform .2s ease, opacity .2s ease; }
+  .chip-in { animation: chipIn .15s ease; }
+  @keyframes chipIn { from { transform: scale(.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .field-error { border-color: #dc2626 !important; }
+  .field-error-msg { color: #dc2626; font-size: .75rem; margin-top: .25rem; display: none; }
+  .field-error-msg.show { display: block; }
+  [data-panel] { display: none; }
+  [data-panel].active { display: block; }
+</style>
+</head>
+
+<body class="min-h-screen bg-slate-50 font-sans text-slate-800 antialiased">
+
+  <div id="topbar"></div>
+
+  <!-- Skeleton shown until auth check resolves -->
+  <div id="loadingState" class="max-w-5xl mx-auto px-4 sm:px-6 py-10 animate-pulse">
+    <div class="h-8 w-64 bg-slate-200 rounded mb-3"></div>
+    <div class="h-4 w-96 max-w-full bg-slate-200 rounded mb-8"></div>
+    <div class="h-40 bg-slate-200 rounded-2xl"></div>
+  </div>
+
+  <main id="content" class="hidden max-w-5xl mx-auto px-4 sm:px-6 py-10 pb-24">
+
+    <!-- Hero -->
+    <div class="mb-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-xs font-bold mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        Submission deadline: 10 July 2026
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-2">Submit Your Abstract</h1>
+      <p class="text-slate-500 max-w-2xl">Share your work for consideration at Pakistan's premier medical research conference.</p>
+    </div>
+
+    <!-- Before you begin -->
+    <div class="bg-white rounded-2xl border border-slate-200 p-6 mb-8">
+      <h2 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Before you begin
+      </h2>
+      <ul class="space-y-2 text-sm text-slate-600 mb-4 list-disc list-inside marker:text-brand-400">
+        <li>Complete every required field carefully and accurately. Fields marked with an asterisk <span class="text-red-500 font-semibold">*</span> are mandatory.</li>
+        <li>Provide a valid email address and an active WhatsApp number — your Registration ID, QR code, and all official correspondence will be sent there.</li>
+        <li>Your progress is saved automatically as you move between sections.</li>
+        <li>Review your details before submitting. Submit only once; a confirmation email will follow shortly.</li>
+        <li>Keep your abstract within the stated word limit and attach up to two figures if required. After review, you'll be notified of your assigned presentation track (Poster, Oral, or Observer).</li>
+      </ul>
+      <div class="flex items-start gap-3 bg-brand-50 rounded-xl p-4 text-sm text-brand-800">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <p>Haven't registered as an observer yet? Seats are limited — even if your abstract isn't selected, you can still attend. <a href="https:.pro/#/observer-registration" class="font-bold underline underline-offset-2">Register here →</a></p>
+      </div>
+    </div>
+
+    <!-- Abstract Submission card -->
+    <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
+      <div class="mb-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-1">Abstract Submission</h2>
+        <p class="text-sm text-slate-500">Complete all four sections to finalise your submission. Navigate between sections freely — your responses are preserved as you move through the application. Tap a section below to open it.</p>
+      </div>
+
+      <!-- Step grid navigator -->
+      <div id="stepGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+        <button type="button" data-step="1" class="step-tile text-left rounded-2xl border-2 p-4 transition">
+          <div class="flex items-center justify-between mb-3">
+            <span class="step-num w-8 h-8 rounded-full flex items-center justify-center text-sm font-extrabold">1</span>
+            <svg class="step-tile-check w-5 h-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+            <svg class="step-tile-flag hidden w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+          </div>
+          <p class="font-bold text-sm text-slate-900">Personal Information</p>
+        </button>
+        <button type="button" data-step="2" class="step-tile text-left rounded-2xl border-2 p-4 transition">
+          <div class="flex items-center justify-between mb-3">
+            <span class="step-num w-8 h-8 rounded-full flex items-center justify-center text-sm font-extrabold">2</span>
+            <svg class="step-tile-check w-5 h-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+            <svg class="step-tile-flag hidden w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+          </div>
+          <p class="font-bold text-sm text-slate-900">Type of Abstract</p>
+        </button>
+        <button type="button" data-step="3" class="step-tile text-left rounded-2xl border-2 p-4 transition">
+          <div class="flex items-center justify-between mb-3">
+            <span class="step-num w-8 h-8 rounded-full flex items-center justify-center text-sm font-extrabold">3</span>
+            <svg class="step-tile-check w-5 h-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+            <svg class="step-tile-flag hidden w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+          </div>
+          <p class="font-bold text-sm text-slate-900">Abstract</p>
+        </button>
+        <button type="button" data-step="4" class="step-tile text-left rounded-2xl border-2 p-4 transition">
+          <div class="flex items-center justify-between mb-3">
+            <span class="step-num w-8 h-8 rounded-full flex items-center justify-center text-sm font-extrabold">4</span>
+            <svg class="step-tile-check w-5 h-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+            <svg class="step-tile-flag hidden w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+          </div>
+          <p class="font-bold text-sm text-slate-900">Add an Author</p>
+        </button>
+      </div>
+
+      <!-- STEP 1: Personal Information -->
+      <section data-panel data-panel-step="1" class="active">
+        <h3 class="text-lg font-bold text-slate-900 mb-1">Step 1 of 4 — Personal Information</h3>
+        <p class="text-sm text-slate-500 mb-5">Tell us who you are and where you study.</p>
+
+        <!-- Error summary: lists exactly what's missing/invalid on this step -->
+        <div data-step-summary class="hidden mb-5 rounded-xl border border-red-300 bg-red-50 p-4">
+          <p class="font-bold text-sm text-red-700 mb-2">Please fix the following:</p>
+          <ul data-step-summary-list class="text-sm text-red-700 list-disc list-inside space-y-1"></ul>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">First Name<span class="text-red-500">*</span></label>
+            <input type="text" data-field="firstName" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent" placeholder="e.g. Ayesha" />
+            <p class="field-error-msg">First name is required.</p>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Last Name<span class="text-red-500">*</span></label>
+            <input type="text" data-field="lastName" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent" placeholder="e.g. Khan" />
+            <p class="field-error-msg">Last name is required.</p>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Email Address<span class="text-red-500">*</span></label>
+            <input type="email" data-field="email" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent" placeholder="you@example.com" />
+            <p class="field-error-msg">Enter a valid email address.</p>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Phone Number<span class="text-red-500">*</span> <span class="font-normal text-slate-400">(active on WhatsApp)</span></label>
+            <input type="tel" data-field="phone" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent" placeholder="03XX XXXXXXX" />
+            <p class="field-error-msg">Enter a valid phone number.</p>
+          </div>
+
+          <div class="sm:col-span-2">
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Name of Institute<span class="text-red-500">*</span></label>
+            <select data-field="institute" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white">
+              <option value="">Select your institute</option>
+            </select>
+            <p class="field-error-msg">Please select your institute.</p>
+          </div>
+          <div class="sm:col-span-2 hidden" data-field-wrap="instituteOther">
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Institute Name<span class="text-red-500">*</span></label>
+            <input type="text" data-field="instituteOther" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent" placeholder="Enter your institute's name" />
+            <p class="field-error-msg">Please enter your institute's name.</p>
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Field of Study<span class="text-red-500">*</span></label>
+            <select data-field="fieldOfStudy" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white">
+              <option value="">Select your field of study</option>
+            </select>
+            <p class="field-error-msg">Please select a field of study.</p>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Year of Study<span class="text-red-500">*</span></label>
+            <select data-field="yearOfStudy" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white">
+              <option value="">Select your year of study</option>
+            </select>
+            <p class="field-error-msg">Please select your year of study.</p>
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Province<span class="text-red-500">*</span></label>
+            <select data-field="province" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white">
+              <option value="">Select your province</option>
+            </select>
+            <p class="field-error-msg">Please select a province.</p>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">City<span class="text-red-500">*</span></label>
+            <select data-field="city" disabled class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white disabled:bg-slate-50 disabled:text-slate-400">
+              <option value="">Select a province first</option>
+            </select>
+            <p class="field-error-msg">Please select a city.</p>
+          </div>
+
+          <div class="sm:col-span-2">
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Result Card / College Card<span class="text-red-500">*</span></label>
+            <div data-dropzone="resultCard" class="relative rounded-xl border-2 border-dashed border-slate-300 hover:border-brand-400 transition p-6 text-center cursor-pointer">
+              <input type="file" data-field="resultCard" accept=".jpg,.jpeg,.png,.pdf" class="absolute inset-0 opacity-0 cursor-pointer" />
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 mx-auto text-slate-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 16V4m0 0L8 8m4-4l4 4M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2" />
+              </svg>
+              <p class="text-sm font-semibold text-slate-600" data-dropzone-label>Drag and drop your file here, or click to browse</p>
+              <p class="text-xs text-slate-400 mt-1">Accepted formats: JPG, PNG, PDF · Maximum size 5 MB</p>
+            </div>
+            <p class="field-error-msg">Please attach your result card or college card (JPG, PNG, or PDF, max 5 MB).</p>
+          </div>
+        </div>
+
+        <div class="flex justify-end mt-6">
+          <button type="button" data-continue="1" class="px-6 py-2.5 rounded-xl bg-brand-600 text-white text-sm font-bold hover:bg-brand-700 transition">Continue</button>
+        </div>
+      </section>
+
+      <!-- STEP 2: Type of Abstract -->
+      <section data-panel data-panel-step="2">
+        <h3 class="text-lg font-bold text-slate-900 mb-1">Step 2 of 4 — Type of Abstract</h3>
+        <p class="text-sm text-slate-500 mb-5">Tell us which field your research belongs to.</p>
+
+        <!-- Error summary: lists exactly what's missing/invalid on this step -->
+        <div data-step-summary class="hidden mb-5 rounded-xl border border-red-300 bg-red-50 p-4">
+          <p class="font-bold text-sm text-red-700 mb-2">Please fix the following:</p>
+          <ul data-step-summary-list class="text-sm text-red-700 list-disc list-inside space-y-1"></ul>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Speciality<span class="text-red-500">*</span></label>
+            <select data-field="speciality" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white">
+              <option value="">Select the speciality</option>
+            </select>
+            <p class="field-error-msg">Please select a speciality.</p>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Sub Speciality</label>
+            <select data-field="subSpeciality" disabled class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white disabled:bg-slate-50 disabled:text-slate-400">
+              <option value="">Select a speciality first</option>
+            </select>
+            <p class="field-error-msg">Please select a sub speciality.</p>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Abstract Type<span class="text-red-500">*</span></label>
+            <select data-field="abstractType" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white">
+              <option value="">Select the category that best describes your submission</option>
+            </select>
+            <p class="field-error-msg">Please select an abstract type.</p>
+          </div>
+        </div>
+
+        <div class="flex justify-between mt-6">
+          <button type="button" data-back="2" class="px-6 py-2.5 rounded-xl border border-slate-300 text-slate-700 text-sm font-bold hover:bg-slate-50 transition">Previous</button>
+          <button type="button" data-continue="2" class="px-6 py-2.5 rounded-xl bg-brand-600 text-white text-sm font-bold hover:bg-brand-700 transition">Continue</button>
+        </div>
+      </section>
+
+      <!-- STEP 3: Abstract -->
+      <section data-panel data-panel-step="3">
+        <h3 class="text-lg font-bold text-slate-900 mb-1">Step 3 of 4 — Abstract</h3>
+
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-5">
+          <p class="font-bold text-sm text-amber-800 mb-2">Abstract guidelines</p>
+          <ul class="text-xs text-amber-800 space-y-1 list-disc list-inside">
+            <li>Total word limit: 300 words, from Introduction through Conclusion.</li>
+            <li>You may upload up to 2 figures, each 5 MB or smaller.</li>
+            <li>All figure uploads must be in TIFF format, at least 300 DPI.</li>
+          </ul>
+        </div>
+
+        <!-- Error summary: lists exactly what's missing/invalid on this step -->
+        <div data-step-summary class="hidden mb-5 rounded-xl border border-red-300 bg-red-50 p-4">
+          <p class="font-bold text-sm text-red-700 mb-2">Please fix the following:</p>
+          <ul data-step-summary-list class="text-sm text-red-700 list-disc list-inside space-y-1"></ul>
+        </div>
+
+        <div class="flex items-center justify-between mb-1 px-1">
+          <span class="text-sm font-semibold text-slate-600">Word count</span>
+          <span class="text-sm"><span data-word-count class="font-extrabold text-brand-600">0</span> <span class="text-slate-400">of 300 words used</span></span>
+        </div>
+        <p data-word-limit-msg class="hidden text-xs font-semibold text-red-600 mb-4 px-1">Your abstract exceeds the 300-word limit — please shorten it before continuing.</p>
+
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Title<span class="text-red-500">*</span></label>
+            <input type="text" data-field="title" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent" placeholder="Title of your abstract" />
+            <p class="field-error-msg">Title is required.</p>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Introduction<span class="text-red-500">*</span></label>
+            <textarea data-field="introduction" data-counted rows="3" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"></textarea>
+            <p class="field-error-msg">Introduction is required.</p>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Objectives<span class="text-red-500">*</span></label>
+            <textarea data-field="objectives" data-counted rows="2" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"></textarea>
+            <p class="field-error-msg">Objectives are required.</p>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Methodology<span class="text-red-500">*</span></label>
+            <textarea data-field="methodology" data-counted rows="3" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"></textarea>
+            <p class="field-error-msg">Methodology is required.</p>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Results<span class="text-red-500">*</span></label>
+            <textarea data-field="results" data-counted rows="3" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"></textarea>
+            <p class="field-error-msg">Results are required.</p>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Conclusion<span class="text-red-500">*</span></label>
+            <textarea data-field="conclusion" data-counted rows="2" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"></textarea>
+            <p class="field-error-msg">Conclusion is required.</p>
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Keywords<span class="text-red-500">*</span></label>
+            <div data-keywords-box class="w-full rounded-xl border border-slate-300 px-3 py-2 flex flex-wrap gap-2 items-center focus-within:ring-2 focus-within:ring-brand-500">
+              <input type="text" data-keywords-input class="flex-1 min-w-[120px] text-sm focus:outline-none py-1" placeholder="Add up to 3 keywords, press Enter to save" />
+            </div>
+            <p class="text-xs text-slate-400 mt-1">Keywords help categorise your submission.</p>
+            <p class="field-error-msg">Add at least one keyword.</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1.5">Figure 1 <span class="font-normal text-slate-400">(optional)</span></label>
+              <div data-dropzone="figure1" class="relative rounded-xl border-2 border-dashed border-slate-300 hover:border-brand-400 transition p-5 text-center cursor-pointer">
+                <input type="file" data-field="figure1" accept=".tif,.tiff" class="absolute inset-0 opacity-0 cursor-pointer" />
+                <p class="text-sm font-semibold text-slate-600" data-dropzone-label>Upload figure 1</p>
+                <p class="text-xs text-slate-400 mt-1">TIFF only · 300 DPI · Max 5 MB</p>
+              </div>
+              <p class="field-error-msg">Figure 1 must be a TIFF file under 5 MB.</p>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1.5">Figure 2 <span class="font-normal text-slate-400">(optional)</span></label>
+              <div data-dropzone="figure2" class="relative rounded-xl border-2 border-dashed border-slate-300 hover:border-brand-400 transition p-5 text-center cursor-pointer">
+                <input type="file" data-field="figure2" accept=".tif,.tiff" class="absolute inset-0 opacity-0 cursor-pointer" />
+                <p class="text-sm font-semibold text-slate-600" data-dropzone-label>Upload figure 2</p>
+                <p class="text-xs text-slate-400 mt-1">TIFF only · 300 DPI · Max 5 MB</p>
+              </div>
+              <p class="field-error-msg">Figure 2 must be a TIFF file under 5 MB.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-between mt-6">
+          <button type="button" data-back="3" class="px-6 py-2.5 rounded-xl border border-slate-300 text-slate-700 text-sm font-bold hover:bg-slate-50 transition">Previous</button>
+          <button type="button" data-continue="3" class="px-6 py-2.5 rounded-xl bg-brand-600 text-white text-sm font-bold hover:bg-brand-700 transition">Continue</button>
+        </div>
+        <p class="text-xs text-slate-400 mt-3">All fields marked * are required.</p>
+      </section>
+
+      <!-- STEP 4: Add an Author -->
+      <section data-panel data-panel-step="4">
+        <h3 class="text-lg font-bold text-slate-900 mb-1">Step 4 of 4 — Add an Author</h3>
+        <p class="text-sm text-slate-500 mb-5">Adding authors is optional — you can submit without any. If you do add authors, add each one separately, mark exactly one as Co Presenter, and use each author rank only once.</p>
+
+        <!-- Error summary: lists exactly what's missing/invalid on this step -->
+        <div data-step-summary class="hidden mb-5 rounded-xl border border-red-300 bg-red-50 p-4">
+          <p class="font-bold text-sm text-red-700 mb-2">Please fix the following:</p>
+          <ul data-step-summary-list class="text-sm text-red-700 list-disc list-inside space-y-1"></ul>
+        </div>
+
+        <div class="flex justify-end mb-4">
+          <button type="button" data-open-author-modal class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-50 text-brand-700 text-sm font-bold hover:bg-brand-100 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+            Add Author
+          </button>
+        </div>
+
+        <div data-author-empty class="text-center py-10 border-2 border-dashed border-slate-200 rounded-xl text-sm text-slate-400">
+          No authors added — that's fine. Adding authors is optional; submit your abstract as is, or use the button above to add one.
+        </div>
+        <ul data-author-list class="space-y-3"></ul>
+
+        <div class="flex justify-between mt-8">
+          <button type="button" data-back="4" class="px-6 py-2.5 rounded-xl border border-slate-300 text-slate-700 text-sm font-bold hover:bg-slate-50 transition">Previous</button>
+          <button type="button" data-submit-abstract class="px-6 py-2.5 rounded-xl bg-emerald-600 text-white text-sm font-bold hover:bg-emerald-700 transition">Submit Abstract</button>
+        </div>
+        <p class="text-xs text-slate-400 mt-3">All fields marked * are required.</p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Author Modal -->
+  <div data-author-modal class="hidden fixed inset-0 z-50 bg-slate-900/50 flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white w-full sm:max-w-lg rounded-t-2xl sm:rounded-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-start justify-between mb-1">
+        <h3 class="text-lg font-bold text-slate-900">Author Details</h3>
+        <button type="button" data-close-author-modal class="text-slate-400 hover:text-slate-600">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+      <p class="text-sm text-slate-500 mb-5">Fill in the author information and save it to the list.</p>
+
+      <div class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">First Name<span class="text-red-500">*</span></label>
+            <input type="text" data-author-field="firstName" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500" />
+            <p class="field-error-msg">First name is required.</p>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Last Name<span class="text-red-500">*</span></label>
+            <input type="text" data-author-field="lastName" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500" />
+            <p class="field-error-msg">Last name is required.</p>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 mb-1.5">Email Address<span class="text-red-500">*</span></label>
+          <input type="email" data-author-field="email" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500" />
+          <p class="field-error-msg">Enter a valid email address.</p>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 mb-1.5">Affiliation<span class="text-red-500">*</span></label>
+          <select data-author-field="affiliation" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white">
+            <option value="">Select institute or organisation</option>
+          </select>
+          <p class="field-error-msg">Please select an affiliation.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Author Status<span class="text-red-500">*</span></label>
+            <select data-author-field="status" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white">
+              <option value="">Select status</option>
+            </select>
+            <p class="field-error-msg">A Co Presenter has already been assigned to another author.</p>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Author Rank<span class="text-red-500">*</span></label>
+            <select data-author-field="rank" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white">
+              <option value="">Select rank</option>
+            </select>
+            <p class="field-error-msg">That rank is already in use by another author.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-end gap-3 mt-6">
+        <button type="button" data-close-author-modal class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 text-sm font-bold hover:bg-slate-50 transition">Cancel</button>
+        <button type="button" data-save-author class="px-5 py-2.5 rounded-xl bg-brand-600 text-white text-sm font-bold hover:bg-brand-700 transition">Save Author</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success overlay -->
+  <div data-success-overlay class="hidden fixed inset-0 z-50 bg-slate-900/50 flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-md rounded-2xl p-8 text-center">
+      <div class="w-14 h-14 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+      </div>
+      <h3 class="text-xl font-bold text-slate-900 mb-2">Abstract submitted</h3>
+      <p class="text-sm text-slate-500 mb-4">Thanks — we've received your abstract. A confirmation email is on its way, and you'll hear from us once review is complete.</p>
+      <div class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 mb-6">
+        <p class="text-xs font-semibold text-slate-500 mb-1">Your tracking ID</p>
+        <p data-review-key class="text-lg font-mono font-extrabold text-brand-700 tracking-wide">—</p>
+      </div>
+      <a href="dashboard.html" class="inline-block px-6 py-2.5 rounded-xl bg-brand-600 text-white text-sm font-bold hover:bg-brand-700 transition">Back to dashboard</a>
+    </div>
+  </div>
+
+  <script type="module" src="js/abstract-form.js"></script>
+</body>
+</html>

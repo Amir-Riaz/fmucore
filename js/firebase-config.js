@@ -38,6 +38,13 @@ const db = getFirestore(app);
 
 const USERS_COLLECTION = "users";
 const PASSES_COLLECTION = "passes";
+// Abstract submissions (full data — submitter identity, authors, everything).
+// Only admins and the submitter themselves should ever read from this one.
+const ABSTRACTS_COLLECTION = "abstracts";
+// PII-free mirror of each abstract, keyed by the same doc id. Reviewers are
+// granted read/write access to this collection only — never to `abstracts` —
+// so they only ever see a review key, never a name.
+const ABSTRACT_REVIEWS_COLLECTION = "abstractReviewViews";
 
 export {
   app,
@@ -58,4 +65,6 @@ export {
   serverTimestamp,
   USERS_COLLECTION,
   PASSES_COLLECTION,
+  ABSTRACTS_COLLECTION,
+  ABSTRACT_REVIEWS_COLLECTION,
 };

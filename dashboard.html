@@ -25,6 +25,7 @@
 </script>
 <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body class="min-h-screen bg-slate-50 font-sans text-slate-800 antialiased">
 
   <!-- Top bar gets injected here -->
@@ -63,7 +64,17 @@
     </div>
 
     <!-- Quick info grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <a href="submit-abstract.html" class="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-lg hover:border-brand-200 transition group">
+        <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center mb-3 group-hover:bg-brand-100 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+        <h3 class="font-bold text-slate-900 mb-1">Submit Abstract</h3>
+        <p class="text-sm text-slate-500">Enter your research for review. Deadline: 10 July 2026.</p>
+      </a>
+
       <a href="myqr.html" class="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-lg hover:border-brand-200 transition group">
         <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center mb-3 group-hover:bg-brand-100 transition">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -94,6 +105,12 @@
         <p class="text-sm text-slate-500">Learn more about the conference.</p>
       </a>
     </div>
+
+    <!-- Abstract submission tracking — hidden until the user has at least one submission -->
+    <section id="abstractSection" class="hidden mt-8">
+      <h2 class="text-lg font-bold text-slate-900 mb-3">My Abstract Submissions</h2>
+      <ul id="abstractList" class="space-y-3"></ul>
+    </section>
 
   </main>
 
