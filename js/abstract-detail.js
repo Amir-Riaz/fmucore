@@ -19,7 +19,7 @@ const STATUS_STYLE = {
   rejected: "bg-red-50 text-red-700",
 };
 const TRACK_LABEL = { poster: "Poster", oral: "Oral", observer: "Observer" };
-const DECISION_LABEL = { accepted: "Reviewer recommends: Accept", rejected: "Reviewer recommends: Reject" };
+const DECISION_LABEL = { accepted: "Accept", rejected: "Reject" };
 const DECISION_STYLE = { accepted: "bg-emerald-50 text-emerald-700", rejected: "bg-red-50 text-red-700" };
 
 let currentAbstract = null;
@@ -50,7 +50,7 @@ async function loadAbstract() {
     }
     currentAbstract = { id: snap.id, ...snap.data() };
     render(currentAbstract);
-    await loadRecommendation();
+    await loadRecommendations();
     wireControls();
 
     document.getElementById("loadingState").classList.add("hidden");
@@ -142,18 +142,28 @@ function render(a) {
   document.getElementById("trackSelect").value = a.track || "";
 }
 
-async function loadRecommendation() {
+async function loadRecommendations() {
   try {
     const snap = await getDoc(doc(db, ABSTRACT_REVIEWS_COLLECTION, abstractId));
-    const decision = snap.exists() ? snap.data().reviewDecision : null;
-    const badge = document.getElementById("recommendationBadge");
-    if (decision) {
-      badge.textContent = DECISION_LABEL[decision] || decision;
-      badge.className = `px-3 py-1 rounded-full text-xs font-bold ${DECISION_STYLE[decision] || "bg-slate-100 text-slate-600"}`;
-      badge.classList.remove("hidden");
-    }
+    const data = snap.exists() ? snap.data() : {};
+    setRecommendationBadge("studentRecommendationBadge", "Student", data.studentReviewDecision);
+    setRecommendationBadge("facultyRecommendationBadge", "Faculty", data.facultyReviewDecision);
   } catch (err) {
-    console.error("Failed to load reviewer recommendation", err);
+    console.error("Failed to load reviewer recommendations", err);
+  }
+}
+
+function setRecommendationBadge(elementId, roleLabel, decision) {
+  const badge = document.getElementById(elementId);
+  if (!badge) return;
+  if (decision) {
+    badge.textContent = `${roleLabel}: ${DECISION_LABEL[decision] || decision}`;
+    badge.className = `px-3 py-1 rounded-full text-xs font-bold ${DECISION_STYLE[decision] || "bg-slate-100 text-slate-600"}`;
+    badge.classList.remove("hidden");
+  } else {
+    badge.textContent = `${roleLabel}: Not yet reviewed`;
+    badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-500";
+    badge.classList.remove("hidden");
   }
 }
 

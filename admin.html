@@ -109,7 +109,61 @@
     </div>
 
   </main>
+<!-- Permissions Modal -->
+<div id="permissionsModal"
+     class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40">
 
+  <div class="bg-white rounded-2xl shadow-xl w-full max-w-md p-6">
+
+    <h2 class="text-xl font-bold mb-4">
+      Special Account Permissions
+    </h2>
+
+    <p id="permUserName" class="text-sm text-slate-500 mb-5"></p>
+
+    <div class="space-y-3">
+
+      <label class="flex items-center gap-3">
+        <input type="checkbox" id="permStudrwr">
+        <span>Student Reviewer</span>
+      </label>
+
+      <label class="flex items-center gap-3">
+        <input type="checkbox" id="permFacrwr">
+        <span>Faculty Reviewer</span>
+      </label>
+
+      <label class="flex items-center gap-3">
+        <input type="checkbox" id="permEnrolmngr">
+        <span>Enrollment Manager</span>
+      </label>
+
+      <label class="flex items-center gap-3">
+        <input type="checkbox" id="permRwrset">
+        <span>Reviewer Manager</span>
+      </label>
+
+    </div>
+
+    <div class="flex justify-end gap-3 mt-6">
+
+      <button
+        id="cancelPermissions"
+        class="px-4 py-2 rounded-lg border">
+        Cancel
+      </button>
+
+      <button
+        id="savePermissions"
+        class="px-4 py-2 rounded-lg bg-brand-600 text-white">
+        Save
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
   <!-- Toast for action feedback -->
   <div id="toast" class="hidden fixed bottom-5 right-5 z-50 max-w-xs px-4 py-3 rounded-lg shadow-lg text-sm font-medium"></div>
 

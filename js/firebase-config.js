@@ -45,6 +45,8 @@ const ABSTRACTS_COLLECTION = "abstracts";
 // granted read/write access to this collection only — never to `abstracts` —
 // so they only ever see a review key, never a name.
 const ABSTRACT_REVIEWS_COLLECTION = "abstractReviewViews";
+// Small collection for app-wide switches, e.g. settings/global -> { certificatesIssuedToAll }
+const SETTINGS_COLLECTION = "settings";
 
 export {
   app,
@@ -67,4 +69,5 @@ export {
   PASSES_COLLECTION,
   ABSTRACTS_COLLECTION,
   ABSTRACT_REVIEWS_COLLECTION,
+  SETTINGS_COLLECTION,
 };

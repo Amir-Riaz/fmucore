@@ -3,21 +3,27 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>FMUCORE Conference</title>
+<title>FMU CORE 2026 — Conference Portal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
     theme: {
       extend: {
-        fontFamily: { sans: ['Inter', 'sans-serif'] },
+        fontFamily: {
+          sans: ['Poppins', 'sans-serif'],
+          display: ['Anton', 'sans-serif'],
+          mark: ['Bebas Neue', 'sans-serif']
+        },
         colors: {
           brand: {
-            50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc',
-            400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca',
-            800: '#3730a3', 900: '#312e81'
-          }
+            50: '#EAF3F4', 100: '#D2E6E9', 200: '#A6CDD3', 300: '#7AB3BE',
+            400: '#4E9AA9', 500: '#2F7E8F', 600: '#236E81', 700: '#185262',
+            800: '#0F3A47', 900: '#00354F'
+          },
+          lime: '#CEFF99',
+          paper: '#F6FAF7'
         }
       }
     }
@@ -25,23 +31,35 @@
 </script>
 <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="min-h-screen bg-gradient-to-br from-brand-50 via-white to-brand-50 font-sans text-slate-800 antialiased flex items-center justify-center px-4">
+<body class="min-h-screen brand-gradient grain font-sans text-slate-800 antialiased flex items-center justify-center px-4 relative overflow-hidden">
 
-  <div class="text-center max-w-lg">
-    <div class="w-16 h-16 rounded-2xl bg-brand-600 flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-brand-600/30 mx-auto mb-6">
-      FC
+  <!-- Signature pulse motif -->
+  <svg class="pulse-line absolute top-1/2 left-0 w-[1400px] max-w-none -translate-y-1/2 opacity-20 pointer-events-none" height="120" viewBox="0 0 1400 120" fill="none">
+    <path d="M0,60 L120,60 L150,20 L180,100 L210,60 L340,60 L370,30 L400,90 L430,60 L560,60 L590,25 L620,95 L650,60 L780,60 L810,30 L840,90 L870,60 L1000,60 L1030,20 L1060,100 L1090,60 L1220,60 L1250,30 L1280,90 L1310,60 L1400,60" stroke="#CEFF99" stroke-width="2.5"/>
+  </svg>
+
+  <div class="relative text-center max-w-lg">
+    <div class="flex items-center justify-center gap-2 mb-7">
+      <span class="font-mark text-3xl text-paper tracking-widest">FMU</span>
+      <span class="font-display text-3xl text-lime leading-none">CORE</span>
     </div>
-    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3">FMUCORE Conference</h1>
-    <p class="text-slate-500 mb-8">Register for the conference or log in to access your dashboard, QR pass, and event details.</p>
+
+    <p class="font-mark tracking-widest text-lime/90 text-sm mb-3">CONFERENCE PORTAL</p>
+    <h1 class="font-display text-4xl sm:text-5xl text-paper mb-4 leading-tight">REGISTER. REVIEW.<br>PRESENT.</h1>
+    <p class="text-paper/80 mb-9 leading-relaxed">Create your account or log in to submit an abstract, track its review status, and collect your conference QR pass.</p>
 
     <div class="flex flex-col sm:flex-row gap-3 justify-center">
-      <a href="signup.html" class="px-6 py-3 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-lg shadow-brand-600/25 transition">
-        Sign Up
+      <a href="signup.html" class="px-6 py-3.5 rounded-full bg-lime hover:bg-white text-brand-900 font-mark tracking-widest text-sm shadow-lg shadow-black/10 transition">
+        SIGN UP
       </a>
-      <a href="login.html" class="px-6 py-3 rounded-lg bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold text-sm transition">
-        Log In
+      <a href="login.html" class="px-6 py-3.5 rounded-full border border-paper/30 hover:border-lime hover:text-lime text-paper font-mark tracking-widest text-sm transition">
+        LOG IN
       </a>
     </div>
+
+    <a href="https://fmucore.edu.pk" class="inline-flex items-center gap-1.5 mt-10 text-paper/50 text-xs hover:text-lime transition">
+      ← Back to fmucore.edu.pk
+    </a>
   </div>
 
 </body>

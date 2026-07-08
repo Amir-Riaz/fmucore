@@ -12,6 +12,7 @@ import {
 import { generateSerial } from "./helpers.js";
 import { syncPassDoc } from "./pass-sync.js";
 
+let currentPermissionUid = null;
 const PAGE_SIZE = 25;
 
 let allUsers = []; // full list from Firestore
@@ -69,6 +70,51 @@ function wireControls() {
       renderTable();
     }
   });
+}
+
+document.getElementById("cancelPermissions").addEventListener("click", closePermissionsModal);
+
+document.getElementById("savePermissions").addEventListener("click", savePermissions);
+
+async function savePermissions() {
+
+  if (!currentPermissionUid) return;
+
+  const updates = {
+
+    studrwr: document.getElementById("permStudrwr").checked,
+
+    facrwr: document.getElementById("permFacrwr").checked,
+
+    enrolmngr: document.getElementById("permEnrolmngr").checked,
+
+    rwrset: document.getElementById("permRwrset").checked,
+
+  };
+
+  try {
+
+    await updateDoc(
+      doc(db, USERS_COLLECTION, currentPermissionUid),
+      updates
+    );
+
+    const user = allUsers.find(x => x.id === currentPermissionUid);
+
+    Object.assign(user, updates);
+
+    closePermissionsModal();
+
+    showToast("Permissions updated.", "success");
+
+  } catch (err) {
+
+    console.error(err);
+
+    showToast("Failed to update permissions.", "error");
+
+  }
+
 }
 
 function applyFilters() {
@@ -193,7 +239,14 @@ function renderTable() {
                   class="px-2.5 py-1.5 rounded-lg text-xs font-semibold transition ${blockColor}">
                   ${blockLabel}
                 </button>
-              </div>
+             <button
+  data-action="permissions"
+  data-uid="${u.id}"
+  class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-indigo-700 hover:bg-indigo-50 transition">
+  Permissions
+</button>
+
+</div>
             </td>
           </tr>`;
       })
@@ -220,6 +273,9 @@ function wireRowActions() {
   document.querySelectorAll('[data-action="issue-cpack"]').forEach((btn) => {
     btn.addEventListener("click", () => handleIssueCpack(btn.dataset.uid));
   });
+  document.querySelectorAll('[data-action="permissions"]').forEach((btn) => {
+  btn.addEventListener("click", () => openPermissionsModal(btn.dataset.uid));
+});
   // Revoke wiring intentionally disabled — see cpackRevokeHtml comment above.
   // document.querySelectorAll('[data-action="toggle-cpack"]').forEach((btn) => {
   //   btn.addEventListener("click", () => handleToggleCpack(btn.dataset.uid));
@@ -360,4 +416,30 @@ function escapeHtml(str) {
   const div = document.createElement("div");
   div.textContent = str;
   return div.innerHTML;
+}
+function openPermissionsModal(uid) {
+  const u = allUsers.find(x => x.id === uid);
+  if (!u) return;
+
+  currentPermissionUid = uid;
+
+  document.getElementById("permUserName").textContent =
+    `${u.fullName} (${u.email})`;
+
+  document.getElementById("permStudrwr").checked = !!u.studrwr;
+  document.getElementById("permFacrwr").checked = !!u.facrwr;
+  document.getElementById("permEnrolmngr").checked = !!u.enrolmngr;
+  document.getElementById("permRwrset").checked = !!u.rwrset;
+
+  document
+    .getElementById("permissionsModal")
+    .classList.remove("hidden");
+}
+
+function closePermissionsModal() {
+  document
+    .getElementById("permissionsModal")
+    .classList.add("hidden");
+
+  currentPermissionUid = null;
 }

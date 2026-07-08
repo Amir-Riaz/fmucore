@@ -38,19 +38,13 @@ export function renderTopbar(activePage, { isAdmin = false } = {}) {
     : "";
 
   el.innerHTML = `
-    <div class="w-full border-b border-slate-200 bg-white/90 backdrop-blur sticky top-0 z-40">
+    <div class="w-full border-b border-slate-200 border-t-2 border-t-lime bg-white/90 backdrop-blur sticky top-0 z-40">
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="h-16 flex items-center justify-between">
 
-         <a href="dashboard.html" class="flex items-center gap-2.5 shrink-0">
-  <img
-    src="cor1.png"
-    alt="FMUCORE Logo"
-    class="w-9 h-9 object-contain"
-  />
-  <span class="text-lg font-extrabold tracking-tight text-slate-900">
-    FMUCORE
-  </span>
+         <a href="dashboard.html" class="flex items-center gap-2 shrink-0">
+  <span class="font-mark text-lg text-brand-900 tracking-widest">FMU</span>
+  <span class="font-display text-lg text-brand-600 leading-none">CORE</span>
 </a>
 
           <!-- Desktop nav -->

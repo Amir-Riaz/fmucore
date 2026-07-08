@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FMU CORE 2026 — Conference on Research Excellence</title>
+<meta name="description" content="FMU CORE 2026: Faisalabad Medical University's first national medical research conference. Abstract submissions, workshops, keynotes, and awards — August 2026.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          lime: '#CEFF99',
+          navydeep: '#00354F',
+          navy: '#024556',
+          teal: '#236E81',
+          paper: '#F6FAF7',
+          ink: '#001b28'
+        },
+        fontFamily: {
+          display: ['Anton', 'sans-serif'],
+          mark: ['Bebas Neue', 'sans-serif'],
+          body: ['Poppins', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-body bg-paper text-navydeep antialiased">
+
+<!-- ============ NAV ============ -->
+<header id="siteNav" class="fixed top-0 inset-x-0 z-50 brand-gradient grain transition-shadow">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2 shrink-0">
+      <img
+      src="cor.png"
+      alt="FMUCORE Logo"
+      class="w-9 h-9 object-contain"
+    />
+    <span class="font-mark text-2xl text-paper tracking-widest">FMU</span>
+      <span class="font-display text-2xl text-lime leading-none">CORE</span>
+      <span class="hidden sm:inline font-mark text-paper/60 text-sm tracking-widest">2026</span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-8 font-mark text-sm">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="about.html" class="nav-link">About Us</a>
+      <a href="scientific-components.html" class="nav-link">Scientific Components</a>
+      <a href="workshops.html" class="nav-link">Workshops</a>
+      <a href="abstract-submission.html" class="nav-link">Abstract Submission</a>
+      <a href="ambassador.html" class="nav-link">Ambassador Programme</a>
+    </nav>
+
+    <a href="abstract-submission.html" class="hidden lg:inline-flex items-center gap-2 bg-lime text-navydeep font-mark tracking-widest text-sm px-5 py-2.5 rounded-full hover:bg-white transition-colors">
+      Submit Abstract
+    </a>
+
+    <button id="menuBtn" aria-expanded="false" aria-label="Toggle menu" class="lg:hidden text-paper p-2">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+
+  <div id="mobileMenu" class="hidden lg:hidden flex-col bg-navydeep/98 px-6 pb-6 gap-1 font-mark text-lg">
+    <a href="index.html" class="nav-link active py-2">Home</a>
+    <a href="about.html" class="nav-link py-2">About Us</a>
+    <a href="scientific-components.html" class="nav-link py-2">Scientific Components</a>
+    <a href="workshops.html" class="nav-link py-2">Workshops</a>
+    <a href="abstract-submission.html" class="nav-link py-2">Abstract Submission</a>
+    <a href="ambassador.html" class="nav-link py-2">Ambassador Programme</a>
+    <a href="abstract-submission.html" class="mt-3 inline-flex justify-center bg-lime text-navydeep font-mark tracking-widest px-5 py-2.5 rounded-full">Submit Abstract</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="relative brand-gradient grain pt-40 pb-28 sm:pt-48 sm:pb-36 overflow-hidden">
+  <!-- Signature pulse motif -->
+  <svg class="pulse-line absolute top-1/2 left-0 w-[1400px] max-w-none -translate-y-1/2 opacity-30" height="120" viewBox="0 0 1400 120" fill="none">
+    <path d="M0,60 L120,60 L150,20 L180,100 L210,60 L340,60 L370,30 L400,90 L430,60 L560,60 L590,25 L620,95 L650,60 L780,60 L810,30 L840,90 L870,60 L1000,60 L1030,20 L1060,100 L1090,60 L1220,60 L1250,30 L1280,90 L1310,60 L1400,60" stroke="#CEFF99" stroke-width="2.5"/>
+  </svg>
+  <div class="pulse-dot absolute w-3 h-3 rounded-full bg-lime shadow-[0_0_18px_4px_rgba(206,255,153,0.7)]"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-8">
+    <p class="eyebrow text-sm sm:text-base text-lime/90 mb-5 reveal in">PUNJAB MEDICAL COLLEGE · FAISALABAD MEDICAL UNIVERSITY</p>
+    <h1 class="font-display text-paper leading-[0.95] text-5xl sm:text-7xl lg:text-8xl max-w-5xl reveal in">
+      CONFERENCE ON<br><span class="text-lime">RESEARCH EXCELLENCE</span>
+    </h1>
+    <p class="mt-8 max-w-2xl text-paper/85 text-lg sm:text-xl leading-relaxed reveal in">
+      Fifty years without a national research conference. FMU CORE 2026 is Pakistan's first national-level medical research conference hosted at Faisalabad Medical University — built to train, review, and celebrate a new generation of evidence-based practitioners.
+    </p>
+
+    <div class="mt-10 flex flex-wrap gap-4 reveal in">
+      <a href="abstract-submission.html" class="bg-lime text-navydeep font-mark tracking-widest text-base px-7 py-4 rounded-full hover:bg-white transition-colors">Submit Your Abstract</a>
+      <a href="#programme" class="border border-paper/40 text-paper font-mark tracking-widest text-base px-7 py-4 rounded-full hover:border-lime hover:text-lime transition-colors">Explore the Programme</a>
+    </div>
+
+    <div class="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl reveal in">
+      <div>
+        <p class="font-display text-3xl sm:text-4xl text-lime">1st</p>
+        <p class="font-mark text-paper/70 text-sm tracking-widest mt-1">NATIONAL CONFERENCE AT FMU</p>
+      </div>
+      <div>
+        <p class="font-display text-3xl sm:text-4xl text-lime">3</p>
+        <p class="font-mark text-paper/70 text-sm tracking-widest mt-1">DAYS OF PROGRAMMING</p>
+      </div>
+      <div>
+        <p class="font-display text-3xl sm:text-4xl text-lime">2-LEVEL</p>
+        <p class="font-mark text-paper/70 text-sm tracking-widest mt-1">SCIENTIFIC REVIEW</p>
+      </div>
+      <div>
+        <p class="font-display text-3xl sm:text-4xl text-lime">Aug</p>
+        <p class="font-mark text-paper/70 text-sm tracking-widest mt-1">2026 · MID-MONTH</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EVENT OVERVIEW ============ -->
+<section class="max-w-7xl mx-auto px-5 sm:px-8 py-24 sm:py-28">
+  <div class="grid lg:grid-cols-12 gap-12">
+    <div class="lg:col-span-5 reveal">
+      <p class="eyebrow text-sm">EVENT OVERVIEW</p>
+      <h2 class="font-display text-4xl sm:text-5xl mt-4 leading-tight">A landmark<br>first, by design.</h2>
+      <p class="mt-6 text-navy/80 leading-relaxed">
+        FMU CORE 2026 marks the first national-level research conference in Faisalabad Medical University's fifty-year history. It's designed to elevate Pakistan's medical research culture and build a lasting community of evidence-based practitioners — undergraduate and postgraduate students across medical and allied health sciences, from every university in the country.
+      </p>
+    </div>
+
+    <div class="lg:col-span-7 reveal">
+      <dl class="grid sm:grid-cols-2 gap-px bg-navy/10 rounded-2xl overflow-hidden border border-navy/10">
+        <div class="bg-white p-6">
+          <dt class="font-mark text-xs tracking-widest text-teal">HOSTING INSTITUTION</dt>
+          <dd class="mt-2 font-medium">Punjab Medical College — Faisalabad Medical University</dd>
+        </div>
+        <div class="bg-white p-6">
+          <dt class="font-mark text-xs tracking-widest text-teal">EVENT DATE</dt>
+          <dd class="mt-2 font-medium">Mid-August 2026 <span class="text-navy/50 font-normal">(exact date TBC)</span></dd>
+        </div>
+        <div class="bg-white p-6">
+          <dt class="font-mark text-xs tracking-widest text-teal">TARGET AUDIENCE</dt>
+          <dd class="mt-2 font-medium">Undergraduate & postgraduate students — medical and allied health sciences, all Pakistani universities</dd>
+        </div>
+        <div class="bg-white p-6">
+          <dt class="font-mark text-xs tracking-widest text-teal">ABSTRACT SUBMISSIONS</dt>
+          <dd class="mt-2 font-medium">Open 20 June 2026 · Close 20 July 2026</dd>
+        </div>
+        <div class="bg-white p-6 sm:col-span-2">
+          <dt class="font-mark text-xs tracking-widest text-teal">REVIEW COMMITTEE</dt>
+          <dd class="mt-2 font-medium">Two-level scientific review — student-level methodology check, followed by faculty-level novelty & validity assessment</dd>
+        </div>
+        <div class="bg-white p-6 sm:col-span-2">
+          <dt class="font-mark text-xs tracking-widest text-teal">SUPERVISION</dt>
+          <dd class="mt-2 font-medium">Dr. Muhammad Owais Fazal (Executive Director, CORE) · Dr. Tahir Bashir (Chairperson, CORE) · Dr. Ayesha Ayub (Staff President, CORE)</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISION & OBJECTIVES ============ -->
+<section class="brand-gradient grain py-24 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-3xl reveal">
+      <p class="eyebrow text-sm text-lime/90">VISION & OBJECTIVES</p>
+      <h2 class="font-display text-4xl sm:text-5xl text-paper mt-4 leading-tight">Not a one-day event.<br>A pipeline.</h2>
+      <p class="mt-6 text-paper/80 leading-relaxed">
+        FMU CORE takes students from training through mentorship, abstract submission, peer review, and conference presentation — ultimately building toward publication.
+      </p>
+    </div>
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Objective cards -->
+      <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-7 hover:border-lime/40 transition-colors">
+        <div class="w-10 h-10 rounded-full bg-lime/15 flex items-center justify-center mb-5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CEFF99" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+        </div>
+        <p class="text-paper/90 leading-relaxed">Establish FMU's first national-level research conference, open to every medical and allied health institution in Pakistan.</p>
+      </div>
+      <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-7 hover:border-lime/40 transition-colors">
+        <div class="w-10 h-10 rounded-full bg-lime/15 flex items-center justify-center mb-5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CEFF99" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M2 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2M17 3.13a4 4 0 0 1 0 7.75M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+        </div>
+        <p class="text-paper/90 leading-relaxed">Create a community of researchers — undergraduate and postgraduate, medical and allied health — from across the country.</p>
+      </div>
+      <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-7 hover:border-lime/40 transition-colors">
+        <div class="w-10 h-10 rounded-full bg-lime/15 flex items-center justify-center mb-5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CEFF99" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        </div>
+        <p class="text-paper/90 leading-relaxed">Train students in research methodology, clinical skills, and evidence-based practice through dedicated hands-on workshops.</p>
+      </div>
+      <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-7 hover:border-lime/40 transition-colors">
+        <div class="w-10 h-10 rounded-full bg-lime/15 flex items-center justify-center mb-5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CEFF99" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <p class="text-paper/90 leading-relaxed">Implement a rigorous two-level scientific review process that upholds academic integrity from submission to acceptance.</p>
+      </div>
+      <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-7 hover:border-lime/40 transition-colors">
+        <div class="w-10 h-10 rounded-full bg-lime/15 flex items-center justify-center mb-5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CEFF99" stroke-width="2"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.14.36.4.66.75.85"/></svg>
+        </div>
+        <p class="text-paper/90 leading-relaxed">Recognise and reward research excellence through competitive prizes and certificates of achievement.</p>
+      </div>
+      <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-7 hover:border-lime/40 transition-colors">
+        <div class="w-10 h-10 rounded-full bg-lime/15 flex items-center justify-center mb-5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CEFF99" stroke-width="2"><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>
+        </div>
+        <p class="text-paper/90 leading-relaxed">Expand FMU's national visibility through the active Ambassador Programme and official university invitations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGRAMME STRUCTURE ============ -->
+<section id="programme" class="max-w-7xl mx-auto px-5 sm:px-8 py-24 sm:py-28">
+  <div class="max-w-2xl reveal">
+    <p class="eyebrow text-sm">PROGRAMME STRUCTURE</p>
+    <h2 class="font-display text-4xl sm:text-5xl mt-4 leading-tight">Three days, one arc.</h2>
+    <p class="mt-6 text-navy/80 leading-relaxed">Workshops run across the first two days to maximise hands-on participation; scientific presentations and keynotes anchor the main conference day.</p>
+  </div>
+
+  <div class="mt-14 grid lg:grid-cols-3 gap-6">
+    <div class="reveal card-line rounded-2xl overflow-hidden">
+      <div class="bg-teal/10 px-7 py-5 border-b card-line">
+        <p class="font-mark text-teal text-sm tracking-widest">DAY 1</p>
+        <p class="font-display text-2xl mt-1">WORKSHOP DAY</p>
+      </div>
+      <ul class="p-7 space-y-4 text-navy/80">
+        <li class="flex gap-3"><span class="text-lime mt-1">●</span>Research Methodology Workshop</li>
+        <li class="flex gap-3"><span class="text-lime mt-1">●</span>Basic Life Support (BLS) Workshop</li>
+        <li class="flex gap-3"><span class="text-lime mt-1">●</span>Radiology Workshop</li>
+      </ul>
+    </div>
+    <div class="reveal card-line rounded-2xl overflow-hidden">
+      <div class="bg-teal/10 px-7 py-5 border-b card-line">
+        <p class="font-mark text-teal text-sm tracking-widest">DAY 2</p>
+        <p class="font-display text-2xl mt-1">WORKSHOP DAY</p>
+      </div>
+      <ul class="p-7 space-y-4 text-navy/80">
+        <li class="flex gap-3"><span class="text-lime mt-1">●</span>Poster Making Workshop</li>
+        <li class="flex gap-3"><span class="text-lime mt-1">●</span>CPR Workshop</li>
+        <li class="flex gap-3"><span class="text-lime mt-1">●</span>Sutures Workshop</li>
+      </ul>
+    </div>
+    <div class="reveal rounded-2xl overflow-hidden brand-gradient text-paper">
+      <div class="px-7 py-5 border-b border-white/15">
+        <p class="font-mark text-lime text-sm tracking-widest">DAY 3</p>
+        <p class="font-display text-2xl mt-1">MAIN CONFERENCE DAY</p>
+      </div>
+      <ul class="p-7 space-y-4 text-paper/90">
+        <li class="flex gap-3"><span class="text-lime mt-1">●</span>Poster Presentations</li>
+        <li class="flex gap-3"><span class="text-lime mt-1">●</span>Oral Presentations</li>
+        <li class="flex gap-3"><span class="text-lime mt-1">●</span>Keynote Speakers</li>
+        <li class="flex gap-3"><span class="text-lime mt-1">●</span>Psychological First Aid Workshop</li>
+        <li class="flex gap-3"><span class="text-lime mt-1">●</span>Awards & Closing Ceremony</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUAD NAVIGATION ============ -->
+<section class="max-w-7xl mx-auto px-5 sm:px-8 pb-24 sm:pb-28">
+  <div class="max-w-2xl reveal">
+    <p class="eyebrow text-sm">GO DEEPER</p>
+    <h2 class="font-display text-4xl sm:text-5xl mt-4 leading-tight">Four ways into<br>FMU CORE.</h2>
+  </div>
+
+  <div class="mt-12 grid sm:grid-cols-2 gap-6">
+    <a href="scientific-components.html" class="quad-card reveal group rounded-3xl p-9 min-h-[260px] flex flex-col justify-between brand-gradient text-paper">
+      <div class="quad-glow"></div>
+      <div class="relative flex items-start justify-between">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#CEFF99" stroke-width="1.6"><path d="M9 2v6l-5 9a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3l-5-9V2M8 2h8"/><path d="M6.5 14h11"/></svg>
+        <span class="quad-num font-mark text-5xl">01</span>
+      </div>
+      <div class="relative">
+        <h3 class="font-display text-2xl sm:text-3xl">SCIENTIFIC<br>COMPONENTS</h3>
+        <p class="mt-3 text-paper/75 text-sm max-w-xs">Poster & oral presentations, and keynote sessions from distinguished national academics.</p>
+        <span class="mt-5 inline-flex items-center gap-2 font-mark text-lime text-sm tracking-widest group-hover:gap-3 transition-all">EXPLORE <span>→</span></span>
+      </div>
+    </a>
+
+    <a href="workshops.html" class="quad-card reveal group rounded-3xl p-9 min-h-[260px] flex flex-col justify-between bg-navy text-paper">
+      <div class="quad-glow"></div>
+      <div class="relative flex items-start justify-between">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#CEFF99" stroke-width="1.6"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg>
+        <span class="quad-num font-mark text-5xl">02</span>
+      </div>
+      <div class="relative">
+        <h3 class="font-display text-2xl sm:text-3xl">WORKSHOP<br>PROGRAMME</h3>
+        <p class="mt-3 text-paper/75 text-sm max-w-xs">Six hands-on sessions — from BLS and CPR to sutures, radiology, and poster making.</p>
+        <span class="mt-5 inline-flex items-center gap-2 font-mark text-lime text-sm tracking-widest group-hover:gap-3 transition-all">EXPLORE <span>→</span></span>
+      </div>
+    </a>
+
+    <a href="abstract-submission.html" class="quad-card reveal group rounded-3xl p-9 min-h-[260px] flex flex-col justify-between bg-white card-line text-navydeep">
+      <div class="quad-glow"></div>
+      <div class="relative flex items-start justify-between">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#236E81" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg>
+        <span class="quad-num font-mark text-5xl" style="-webkit-text-stroke: 1px rgba(0,53,79,0.35);">03</span>
+      </div>
+      <div class="relative">
+        <h3 class="font-display text-2xl sm:text-3xl text-navydeep">ABSTRACT<br>SUBMISSION & REVIEW</h3>
+        <p class="mt-3 text-navy/70 text-sm max-w-xs">Timeline, portal access, and the two-level scientific review process explained.</p>
+        <span class="mt-5 inline-flex items-center gap-2 font-mark text-teal text-sm tracking-widest group-hover:gap-3 transition-all">EXPLORE <span>→</span></span>
+      </div>
+    </a>
+
+    <a href="ambassador.html" class="quad-card reveal group rounded-3xl p-9 min-h-[260px] flex flex-col justify-between bg-lime text-navydeep">
+      <div class="quad-glow"></div>
+      <div class="relative flex items-start justify-between">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#00354F" stroke-width="1.6"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="quad-num font-mark text-5xl" style="-webkit-text-stroke: 1px rgba(0,53,79,0.35);">04</span>
+      </div>
+      <div class="relative">
+        <h3 class="font-display text-2xl sm:text-3xl">AMBASSADOR<br>PROGRAMME</h3>
+        <p class="mt-3 text-navy/70 text-sm max-w-xs">University outreach across Punjab — already active, already recruiting.</p>
+        <span class="mt-5 inline-flex items-center gap-2 font-mark text-navy text-sm tracking-widest group-hover:gap-3 transition-all">EXPLORE <span>→</span></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ============ AWARDS & RECOGNITION ============ -->
+<section class="brand-gradient grain py-24 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl reveal">
+      <p class="eyebrow text-sm text-lime/90">AWARDS & RECOGNITION</p>
+      <h2 class="font-display text-4xl sm:text-5xl text-paper mt-4 leading-tight">Excellence,<br>rewarded.</h2>
+      <p class="mt-6 text-paper/80 leading-relaxed">Every presenter receives a certificate of participation. Winners receive formal awards and prizes across all competitive categories.</p>
+    </div>
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-7 text-center">
+        <p class="font-mark text-lime text-xs tracking-widest">ORAL PRESENTATION</p>
+        <p class="font-display text-2xl text-paper mt-3">GOLD AWARD</p>
+        <p class="text-paper/70 text-sm mt-1">+ Cash Prize</p>
+      </div>
+      <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-7 text-center">
+        <p class="font-mark text-lime text-xs tracking-widest">RUNNER-UP · ORAL</p>
+        <p class="font-display text-2xl text-paper mt-3">SILVER AWARD</p>
+        <p class="text-paper/70 text-sm mt-1">+ Prize</p>
+      </div>
+      <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-7 text-center">
+        <p class="font-mark text-lime text-xs tracking-widest">POSTER PRESENTATION</p>
+        <p class="font-display text-2xl text-paper mt-3">GOLD AWARD</p>
+        <p class="text-paper/70 text-sm mt-1">+ Cash Prize</p>
+      </div>
+      <div class="reveal bg-white/5 border border-white/10 rounded-2xl p-7 text-center">
+        <p class="font-mark text-lime text-xs tracking-widest">RUNNER-UP · POSTER</p>
+        <p class="font-display text-2xl text-paper mt-3">SILVER AWARD</p>
+        <p class="text-paper/70 text-sm mt-1">+ Prize</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING CTA ============ -->
+<section class="max-w-7xl mx-auto px-5 sm:px-8 py-24 sm:py-28 text-center">
+  <p class="eyebrow text-sm reveal">BE PART OF THE HISTORY</p>
+  <h2 class="font-display text-4xl sm:text-6xl mt-4 max-w-4xl mx-auto leading-tight reveal">
+    For fifty years, this institution stood without a national research conference. That changes — permanently.
+  </h2>
+  <div class="mt-10 flex flex-wrap justify-center gap-4 reveal">
+    <a href="abstract-submission.html" class="bg-navydeep text-paper font-mark tracking-widest text-base px-7 py-4 rounded-full hover:bg-teal transition-colors">Submit Your Abstract</a>
+    <a href="ambassador.html" class="border border-navydeep/30 text-navydeep font-mark tracking-widest text-base px-7 py-4 rounded-full hover:border-teal hover:text-teal transition-colors">Become an Ambassador</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="brand-gradient grain pt-16 pb-10">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div>
+        <span class="font-display text-2xl text-lime">FMU CORE</span>
+        <p class="mt-3 text-paper/70 text-sm leading-relaxed">Conference on Research Excellence. Faisalabad Medical University, August 2026.</p>
+      </div>
+      <div>
+        <p class="font-mark text-paper text-sm tracking-widest mb-4">EXPLORE</p>
+        <ul class="space-y-2 text-paper/70 text-sm">
+          <li><a href="about.html" class="hover:text-lime transition-colors">About Us</a></li>
+          <li><a href="scientific-components.html" class="hover:text-lime transition-colors">Scientific Components</a></li>
+          <li><a href="workshops.html" class="hover:text-lime transition-colors">Workshop Programme</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-mark text-paper text-sm tracking-widest mb-4">PARTICIPATE</p>
+        <ul class="space-y-2 text-paper/70 text-sm">
+          <li><a href="abstract-submission.html" class="hover:text-lime transition-colors">Abstract Submission</a></li>
+          <li><a href="ambassador.html" class="hover:text-lime transition-colors">Ambassador Programme</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-mark text-paper text-sm tracking-widest mb-4">CONTACT</p>
+        <p class="text-paper/70 text-sm">fmucore.edu.pk</p>
+        <p class="text-paper/70 text-sm mt-1">Live from 20 June 2026</p>
+      </div>
+    </div>
+    <div class="mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-paper/50 text-xs">
+      <p>© <span class="js-year"></span> FMU CORE — Faisalabad Medical University. All rights reserved.</p>
+      <p>Punjab Medical College · Faisalabad, Pakistan</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

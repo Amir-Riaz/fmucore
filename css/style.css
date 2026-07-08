@@ -1,0 +1,73 @@
+/* FMUCORE — small custom touches on top of Tailwind utility classes
+   Brand system matches the main fmucore.edu.pk marketing site:
+   teal #236E81 · navy #024556 · navy-deep #00354F · lime #CEFF99
+   Display: Anton · Labels: Bebas Neue · Body/UI: Poppins            */
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Brand-consistent focus ring for keyboard users (lime, matches marketing site) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #CEFF99;
+  outline-offset: 2px;
+}
+
+/* Custom thin scrollbar (admin table, etc.) */
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #236E81;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #185262;
+}
+
+/* Brand gradient surface — same recipe as the marketing site's hero/footer bands */
+.brand-gradient {
+  background: linear-gradient(160deg, #236E81 0%, #024556 45%, #00354F 100%);
+}
+
+/* Subtle grain texture used on dark brand-gradient surfaces */
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 3px 3px;
+  pointer-events: none;
+}
+
+/* Signature ECG / research-pulse motif, reused from the marketing site */
+.pulse-line path {
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  animation: draw 2.4s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-line path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}

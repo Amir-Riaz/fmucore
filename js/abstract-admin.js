@@ -44,19 +44,38 @@ async function loadAbstracts() {
   applyFilters();
 }
 
+
 function wireControls() {
   document.getElementById("searchInput").addEventListener("input", applyFilters);
   document.getElementById("statusFilter").addEventListener("change", applyFilters);
 
-  document.querySelectorAll("[data-close-view-modal]").forEach((btn) =>
-    btn.addEventListener("click", () => document.querySelector("[data-view-modal]").classList.add("hidden"))
-  );
+  // Status modal
   document.querySelectorAll("[data-close-status-modal]").forEach((btn) =>
-    btn.addEventListener("click", () => document.querySelector("[data-status-modal]").classList.add("hidden"))
+    btn.addEventListener("click", closeStatusModal)
   );
-  document.querySelector("[data-save-status]").addEventListener("click", saveStatusChange);
+
+  document.querySelector("[data-save-status]")
+    .addEventListener("click", saveStatusChange);
+
+  // -----------------------------
+  // Reviewer modal
+  // -----------------------------
+  document.querySelectorAll("[data-close-reviewers-modal]").forEach((btn) =>
+    btn.addEventListener("click", closeReviewersModal)
+  );
+
+  document.querySelector("[data-save-reviewers]")
+    .addEventListener("click", saveReviewerAssignments);
+}
+function closeStatusModal() {
+  activeAbstractId = null;
+  document.querySelector("[data-status-modal]").classList.add("hidden");
 }
 
+function closeReviewersModal() {
+  activeAbstractId = null;
+  document.querySelector("[data-reviewers-modal]").classList.add("hidden");
+}
 function applyFilters() {
   const q = document.getElementById("searchInput").value.trim().toLowerCase();
   const statusFilter = document.getElementById("statusFilter").value;

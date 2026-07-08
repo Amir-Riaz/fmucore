@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Enrollment Manager — FMUCORE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'sans-serif'] },
+        colors: {
+          brand: {
+            50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc',
+            400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca',
+            800: '#3730a3', 900: '#312e81'
+          }
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="min-h-screen bg-slate-50 font-sans text-slate-800 antialiased">
+
+  <div id="topbar"></div>
+
+  <div id="loadingState" class="max-w-7xl mx-auto px-4 sm:px-6 py-10 animate-pulse">
+    <div class="h-8 w-64 bg-slate-200 rounded mb-8"></div>
+    <div class="h-96 bg-slate-200 rounded-2xl"></div>
+  </div>
+
+  <main id="content" class="hidden max-w-6xl mx-auto px-4 sm:px-6 py-8">
+
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+      <div>
+        <h1 class="text-2xl font-extrabold text-slate-900">Enrollment Manager</h1>
+        <p class="text-slate-500 text-sm mt-1">
+          <span id="totalCount">0</span> registered participants
+        </p>
+      </div>
+
+      <input
+        id="searchInput" type="text" placeholder="Search by name or email..."
+        class="px-3.5 py-2 rounded-lg border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none transition text-sm w-full sm:w-72"
+      />
+    </div>
+
+    <!-- Pending list -->
+    <section class="mb-8">
+      <h2 class="text-sm font-bold text-slate-700 uppercase tracking-wider mb-3 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+        Pending Approval
+        <span id="pendingCount" class="text-slate-400 font-medium normal-case">(0)</span>
+      </h2>
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="bg-slate-50 border-b border-slate-200">
+              <tr class="text-left text-slate-500 text-xs uppercase tracking-wider">
+                <th class="px-4 py-3 font-semibold">Name</th>
+                <th class="px-4 py-3 font-semibold">Email</th>
+                <th class="px-4 py-3 font-semibold hidden md:table-cell">Organization</th>
+                <th class="px-4 py-3 font-semibold text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody id="pendingTableBody" class="divide-y divide-slate-100"></tbody>
+          </table>
+        </div>
+        <div id="pendingEmptyState" class="hidden py-10 text-center text-slate-400 text-sm">
+          No pending participants.
+        </div>
+      </div>
+    </section>
+
+    <!-- Approved list -->
+    <section>
+      <h2 class="text-sm font-bold text-slate-700 uppercase tracking-wider mb-3 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-green-500"></span>
+        Approved
+        <span id="approvedCount" class="text-slate-400 font-medium normal-case">(0)</span>
+      </h2>
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="bg-slate-50 border-b border-slate-200">
+              <tr class="text-left text-slate-500 text-xs uppercase tracking-wider">
+                <th class="px-4 py-3 font-semibold">Name</th>
+                <th class="px-4 py-3 font-semibold">Email</th>
+                <th class="px-4 py-3 font-semibold hidden md:table-cell">Organization</th>
+                <th class="px-4 py-3 font-semibold">Approved By</th>
+              </tr>
+            </thead>
+            <tbody id="approvedTableBody" class="divide-y divide-slate-100"></tbody>
+          </table>
+        </div>
+        <div id="approvedEmptyState" class="hidden py-10 text-center text-slate-400 text-sm">
+          No approved participants yet.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="toast" class="hidden fixed bottom-5 right-5 z-50 max-w-xs px-4 py-3 rounded-lg shadow-lg text-sm font-medium"></div>
+
+  <script type="module" src="js/enrollment-manager.js"></script>
+</body>
+</html>

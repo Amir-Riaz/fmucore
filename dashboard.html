@@ -3,21 +3,28 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dashboard — FMUCORE</title>
+<title>Dashboard — FMU CORE</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
   tailwind.config = {
     theme: {
       extend: {
-        fontFamily: { sans: ['Inter', 'sans-serif'] },
+        fontFamily: {
+          sans: ['Poppins', 'sans-serif'],
+          display: ['Anton', 'sans-serif'],
+          mark: ['Bebas Neue', 'sans-serif']
+        },
         colors: {
           brand: {
-            50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc',
-            400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca',
-            800: '#3730a3', 900: '#312e81'
-          }
+            50: '#EAF3F4', 100: '#D2E6E9', 200: '#A6CDD3', 300: '#7AB3BE',
+            400: '#4E9AA9', 500: '#2F7E8F', 600: '#236E81', 700: '#185262',
+            800: '#0F3A47', 900: '#00354F'
+          },
+          lime: '#CEFF99',
+          paper: '#F6FAF7'
         }
       }
     }
@@ -26,7 +33,7 @@
 <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body class="min-h-screen bg-slate-50 font-sans text-slate-800 antialiased">
+<body class="min-h-screen bg-paper font-sans text-slate-800 antialiased">
 
   <!-- Top bar gets injected here -->
   <div id="topbar"></div>
@@ -41,11 +48,12 @@
   <main id="content" class="hidden max-w-6xl mx-auto px-4 sm:px-6 py-10">
 
     <!-- Welcome card -->
-    <div class="bg-gradient-to-br from-brand-600 to-brand-700 rounded-2xl p-6 sm:p-8 text-white shadow-xl shadow-brand-600/20 mb-8">
-      <p id="welcomeMsg" class="text-brand-100 text-sm font-medium mb-1.5">Welcome back,</p>
-      <h1 id="userNameHeading" class="text-2xl sm:text-3xl font-extrabold mb-1">—</h1>
-      <p id="userSerial" class="hidden text-brand-100 text-sm font-mono mb-3"></p>
-      <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-brand-50 mb-4">
+    <div class="brand-gradient grain rounded-2xl p-6 sm:p-8 text-white shadow-xl shadow-brand-900/20 mb-8">
+      <p class="font-mark tracking-widest text-lime/90 text-xs mb-1.5">FMU CORE 2026</p>
+      <p id="welcomeMsg" class="text-white/80 text-sm font-medium mb-1.5">Welcome back,</p>
+      <h1 id="userNameHeading" class="font-display text-2xl sm:text-3xl mb-1">—</h1>
+      <p id="userSerial" class="hidden text-white/75 text-sm font-mono mb-3"></p>
+      <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/85 mb-4">
         <div class="flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zM12 14v7m0-11V3m8 8h.01M4 11h.01" />
@@ -64,16 +72,40 @@
     </div>
 
     <!-- Quick info grid -->
+     
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <a href="submit-abstract.html" class="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-lg hover:border-brand-200 transition group">
-        <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center mb-3 group-hover:bg-brand-100 transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
-        </div>
-        <h3 class="font-bold text-slate-900 mb-1">Submit Abstract</h3>
-        <p class="text-sm text-slate-500">Enter your research for review. Deadline: 10 July 2026.</p>
-      </a>
+     
+     <a href="submit-abstract.html"
+   id="submitAbstractTile"
+   class="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-lg hover:border-brand-200 transition group relative">
+
+  <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center mb-3 group-hover:bg-brand-100 transition">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         class="w-5 h-5"
+         fill="none"
+         viewBox="0 0 24 24"
+         stroke="currentColor"
+         stroke-width="2">
+      <path stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+    </svg>
+  </div>
+
+  <h3 class="font-bold text-slate-900 mb-1">Submit Abstract</h3>
+
+  <p class="text-sm text-slate-500">
+    Enter your research for review. Deadline: 10 July 2026.
+  </p>
+
+  <p id="submitAbstractLockNote"
+     class="hidden text-xs font-semibold text-amber-600 mt-2">
+    Only approved accounts can submit an abstract.
+  </p>
+
+</a>
+
+
 
       <a href="myqr.html" class="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-lg hover:border-brand-200 transition group">
         <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center mb-3 group-hover:bg-brand-100 transition">
@@ -106,13 +138,92 @@
       </a>
     </div>
 
-    <!-- Abstract submission tracking — hidden until the user has at least one submission -->
+   <!-- Special role access — shown only for accounts granted these permissions -->
+<section id="specialRolesSection" class="hidden mt-8">
+  <h2 class="font-display text-lg text-brand-900 mb-3">MANAGEMENT ACCESS</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+    <a href="student-review-abstracts.html" id="studrwrTile" class="hidden bg-white rounded-2xl border border-indigo-200 p-5 hover:shadow-lg hover:border-indigo-400 transition group">
+      <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-3 group-hover:bg-indigo-100 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.42A12.083 12.083 0 0112 21a12.083 12.083 0 01-6.16-10.42L12 14z" />
+        </svg>
+      </div>
+      <h3 class="font-bold text-slate-900 mb-1">Student Reviewer</h3>
+      <p class="text-sm text-slate-500">Review abstracts on behalf of the Student Academic Committee.</p>
+    </a>
+
+    <a href="faculty-review-abstracts.html" id="facrwrTile" class="hidden bg-white rounded-2xl border border-indigo-200 p-5 hover:shadow-lg hover:border-indigo-400 transition group">
+      <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-3 group-hover:bg-indigo-100 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      </div>
+      <h3 class="font-bold text-slate-900 mb-1">Faculty Reviewer</h3>
+      <p class="text-sm text-slate-500">Review abstracts as a faculty panel member.</p>
+    </a>
+
+    <a href="enrollment-manager.html" id="enrolmngrTile" class="hidden bg-white rounded-2xl border border-indigo-200 p-5 hover:shadow-lg hover:border-indigo-400 transition group">
+      <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-3 group-hover:bg-indigo-100 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
+      </div>
+      <h3 class="font-bold text-slate-900 mb-1">Enrollment Manager</h3>
+      <p class="text-sm text-slate-500">Manage participant enrolment and registrations.</p>
+    </a>
+
+    <a href="reviewer-manager.html" id="rwrsetTile" class="hidden bg-white rounded-2xl border border-indigo-200 p-5 hover:shadow-lg hover:border-indigo-400 transition group">
+      <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-3 group-hover:bg-indigo-100 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+        </svg>
+      </div>
+      <h3 class="font-bold text-slate-900 mb-1">Reviewer Manager</h3>
+      <p class="text-sm text-slate-500">Assign and manage reviewers across tracks.</p>
+    </a>
+
+  </div>
+</section>
+
+
+<!-- Abstract submission tracking — hidden until the user has at least one submission -->
     <section id="abstractSection" class="hidden mt-8">
-      <h2 class="text-lg font-bold text-slate-900 mb-3">My Abstract Submissions</h2>
+      <h2 class="font-display text-lg text-brand-900 mb-3">MY ABSTRACT SUBMISSIONS</h2>
       <ul id="abstractList" class="space-y-3"></ul>
     </section>
 
   </main>
+  
+<!-- Congratulations Ticket Modal -->
+<div id="ticketModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 flex items-center justify-center p-4">
+  <div class="relative w-full max-w-sm">
+    <button id="closeTicketModal" class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-white text-slate-700 font-bold shadow-lg z-10">&times;</button>
+    <div id="ticketCard" class="bg-white rounded-2xl overflow-hidden shadow-2xl">
+      <div class="brand-gradient grain px-6 py-5 text-white text-center">
+        <p class="font-mark tracking-widest text-lime text-xs mb-1">🎉 CONGRATULATIONS</p>
+        <h2 class="font-display text-xl">YOUR ABSTRACT IS ACCEPTED</h2>
+      </div>
+      <div class="border-t-2 border-dashed border-slate-200 mx-6"></div>
+      <div class="p-6 space-y-3 text-sm">
+        <div><p class="text-xs text-slate-400 uppercase tracking-wide">Attendee</p><p id="ticketName" class="font-bold text-slate-900">—</p></div>
+        <div><p class="text-xs text-slate-400 uppercase tracking-wide">Email</p><p id="ticketEmail" class="font-medium text-slate-700">—</p></div>
+        <div><p class="text-xs text-slate-400 uppercase tracking-wide">Serial / Pass No.</p><p id="ticketSerial" class="font-mono font-bold text-brand-700">—</p></div>
+        <div><p class="text-xs text-slate-400 uppercase tracking-wide">Abstract Title</p><p id="ticketTitle" class="font-semibold text-slate-900">—</p></div>
+        <div><p class="text-xs text-slate-400 uppercase tracking-wide">Presentation Track</p><span id="ticketTrack" class="inline-block mt-1 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 text-brand-700">—</span></div>
+      </div>
+      <div class="bg-slate-50 px-6 py-3 text-center text-[11px] text-slate-400 font-mono">FMU CORE 2026 · ADMIT ONE</div>
+    </div>
+    <button id="downloadTicketBtn" type="button" class="mt-3 w-full py-2.5 rounded-xl bg-white text-brand-700 text-sm font-bold shadow-lg hover:bg-brand-50 transition flex items-center justify-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
+      </svg>
+      Download Pass (PNG)
+    </button>
+  </div>
+</div>
+
 
   <script type="module" src="js/dashboard.js"></script>
 </body>
